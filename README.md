@@ -1,29 +1,9 @@
-# netease-project
+# 项目结构
 
-## Project setup
-```
-npm install
-```
+ - HomePage.vue                         -->>首页页面
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+ - Classification.vue                   -->>分类页面
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+ - ShoppingCart.vue                     -->>购物车页面
+ 
+ - Personal.vue                         -->>个人中心页面
