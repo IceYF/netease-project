@@ -17,8 +17,9 @@
 <script>
 export default {
   data (){
+    let activeNumber = this.$route.meta.tabIndex;
     return{
-      active: 0,
+      active: activeNumber,
     }
   },
 

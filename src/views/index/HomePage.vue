@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            
+            dad
         </div>
     </div>
 </template>
@@ -11,7 +11,3 @@ export default {
     
 }
 </script>
-
-<style lang="less">
-@import '../styles/reset.less';
-</style>
