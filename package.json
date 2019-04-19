@@ -11,6 +11,7 @@
     "axios": "^0.18.0",
     "better-scroll": "^1.15.2",
     "core-js": "^2.6.5",
+    "postcss-rpxtorem": "^4.0.1",
     "vant": "^1.6.14",
     "vue": "^2.6.6",
     "vue-router": "^3.0.4",
@@ -49,7 +50,9 @@
       "autoprefixer": {},
       "postcss-pxtorem": {
         "rootValue": 100,
-        "propList": ["*"],
+        "propList": [
+          "*"
+        ],
         "selectorBlackList": []
       }
     }

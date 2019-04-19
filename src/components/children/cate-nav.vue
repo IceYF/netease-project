@@ -24,8 +24,7 @@
  </script>
  <style lang="less">
     .scroll{
-      text-align: center;
-      padding: .53333rem 0;
+      text-align: center; 
       line-height: 44px
     }
     .active{

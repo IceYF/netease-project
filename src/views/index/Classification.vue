@@ -49,8 +49,6 @@ export default {
 }
 </script>
 
-
-
  <style lang="less">
     #category{
         box-sizing: border-box;
