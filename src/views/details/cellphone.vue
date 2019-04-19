@@ -23,7 +23,7 @@
               <van-button slot="button" size="small" type="primary">发送验证码</van-button>
             </van-field>
           </van-cell-group>
-          <router-link to="index/Personal">
+          <router-link to="index/Personal.vue">
             <div class="y-button">
               <span>其他登录方式</span>
             </div>
