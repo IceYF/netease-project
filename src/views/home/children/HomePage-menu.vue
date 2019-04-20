@@ -56,7 +56,7 @@ export default {
           }
           // console.log(SchemeUrlList)
         }
-        console.log(SchemeUrlList)
+        // console.log(SchemeUrlList)
         // for (let index = 0; index < SchemeUrlList.length; index++) {
         //   // console.log(SchemeUrlList[index])
         //   let string = SchemeUrlList[index];
@@ -72,7 +72,7 @@ export default {
             id:SchemeUrlList[0]
           }
         }).then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             var ListOfGoodsList = res.data.data.categoryItemList.map(({
               frontDesc,
               name,
@@ -84,9 +84,9 @@ export default {
               wapBannerUrl,
               itemList
             }));
-            console.log(ListOfGoodsList)
+            // console.log(ListOfGoodsList)
           }).catch(err => {
-            console.log(err)
+            // console.log(err)
           })
       })
     }
