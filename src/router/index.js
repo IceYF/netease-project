@@ -27,7 +27,7 @@ export default new VueRouter({
 				{ path: "cellphone", component: () => import('../views/details/cellphone.vue') },
 			]
 		},
-		{ path: '*2', redirect: '/HomePage' }
+		{ path: '*', redirect: '/HomePage' }
 	]
 })
 
