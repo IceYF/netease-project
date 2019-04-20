@@ -1,238 +1,218 @@
 <template>
-  <div id="main">
-    <!-- logo和search搜索框 -->
-    <div class="header">
-      <div class="header-logo">
-        <img
-          src="//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-a90bdaae6b.png"
-          alt
-        >
-      </div>
-      <div class="search">
-        <van-search placeholder="请输入搜索关键词" v-model="value" disabled="true"/>
-      </div>
-      <!-- 横向导航 -->
-      <van-tabs>
-        <van-tab v-for="(item,index) in NavList" :key="index" :title="item.name"></van-tab>
-      </van-tabs>
+  <!-- 商品主体部分 -->
+  <div class="main">
+    <!-- 轮播图 -->
+    <van-swipe :autoplay="3000">
+      <van-swipe-item v-for="(item, index) in BannerList" :key="index">
+        <img :src="item.picUrl" width="100%" height="185px" dispaly="block">
+      </van-swipe-item>
+    </van-swipe>
+    <div class="security">
+      <a href="javascript:void(0)" v-for="(item,index) in Security" :key="index">
+        <img :src="item.imgUrl" alt="">
+        {{ item.text }}
+      </a>
     </div>
-    <!-- 商品主体部分 -->
-    <div class="main">
-      <!-- 轮播图 -->
-      <van-swipe :autoplay="3000">
-        <van-swipe-item v-for="(item, index) in BannerList" :key="index">
-          <img :src="item.picUrl" width="100%" height="185px" dispaly="block">
-        </van-swipe-item>
-      </van-swipe>
-      <div class="security">
-        <a href="javascript:void(0)" v-for="(item,index) in Security" :key="index">
-          <img :src="item.imgUrl" alt="">
-          {{ item.text }}
-        </a>
-      </div>
-      <!-- 商品类型导航 -->
-      <div class="commodity-type">
-        <a href="#" v-for="(item,index) in CommodityTypeList" :key="index">
-          <div class="imgage">
-            <img :src="item.picUrl" alt>
-          </div>
-          <p>{{ item.text }}</p>
-        </a>
-      </div>
-      <!-- 新人专享礼 -->
-      <div class="new-exclusive">
-        <div class="title">
-          <h2>新人专享礼</h2>
+    <!-- 商品类型导航 -->
+    <div class="commodity-type">
+      <a href="#" v-for="(item,index) in CommodityTypeList" :key="index">
+        <div class="imgage">
+          <img :src="item.picUrl" alt>
         </div>
-        <div class="exclusive-list">
-          <div class="exclusive-left">
-            <a href="#">
-              <span>
-                <p>新人专享礼包</p>
-              </span>
-              <div>
-                <img src="//yanxuan.nosdn.127.net/ba4d635ec94ad95b28bfab6500900659.png" alt="">
-              </div>
-            </a>
-          </div>
-          <div class="exclusive-right">
-            <div class="exclusive-right-top">
-              <a href="#">
-                <div class="exclusive-text">
-                  <span>福利社</span>
-                  <p>今日特惠</p>
-                </div>
-                <div class="exclusive-img">
-                  <img src="https://yanxuan.nosdn.127.net/f9a8291c259678a0a2bfbeffe7d04d0e.png" alt=""> 
-                  <div class="exclusive-icon">
-                    <span>￥83.8</span>
-                    <p>￥120</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="exclusive-right-top exclusive-right-bottom">
-              <a href="#">
-                <div class="exclusive-text">
-                  <span>新人拼团</span>
-                  <p></p>
-                  <i>一元起包邮</i>
-                </div>
-                <div class="exclusive-img">
-                  <img src="https://yanxuan.nosdn.127.net/d391ff6177d8e9a6b29356c15ba97713.png" alt=""> 
-                  <div class="exclusive-icon">
-                    <span>￥313</span>
-                    <p>￥380</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
+        <p>{{ item.text }}</p>
+      </a>
+    </div>
+    <!-- 新人专享礼 -->
+    <div class="new-exclusive">
+      <div class="title">
+        <h2>新人专享礼</h2>
       </div>
-      <!-- 品牌制造商直供 -->
-      <div class="brand-supplier">
-        <div class="title">
-          <h2>品牌制造商直供</h2>
-          <a href="#">更多></a>
-        </div>
-        <div class="brand-supplier-main">
-          <a href="#" 
-            v-for="(item,index) in BrandSupplierList"
-            :key="index"
-          >
-            <img :src="item.picUrl" alt="">
-            <div class="brand-supplier-title">
-              <h4>{{ item.name }}</h4>
-              <div>
-                <span>{{ item.floorPrice }}元起</span>
-              </div>
+      <div class="exclusive-list">
+        <div class="exclusive-left">
+          <a href="#">
+            <span>
+              <p>新人专享礼包</p>
+            </span>
+            <div>
+              <img src="//yanxuan.nosdn.127.net/ba4d635ec94ad95b28bfab6500900659.png" alt="">
             </div>
           </a>
         </div>
-      </div>
-      <!-- 类目热销榜 -->
-      <div class="hot-product">
-        <div class="hot-product-title">
-          <h2>类目热销榜</h2>
-        </div>
-        <div class="hot-product-main">
-          <div class="top">
-            <a href="javascript:void(0)"
-              v-for="(item,index) in TopList"
-              :key="index"
-            >
-              <span>{{ item.categoryName }}</span>
-              <img :src="item.picUrl" alt="">
+        <div class="exclusive-right">
+          <div class="exclusive-right-top">
+            <a href="#">
+              <div class="exclusive-text">
+                <span>福利社</span>
+                <p>今日特惠</p>
+              </div>
+              <div class="exclusive-img">
+                <img src="https://yanxuan.nosdn.127.net/f9a8291c259678a0a2bfbeffe7d04d0e.png" alt=""> 
+                <div class="exclusive-icon">
+                  <span>￥83.8</span>
+                  <p>￥120</p>
+                </div>
+              </div>
             </a>
           </div>
-          <div class="bottom">
-            <a href="javascript:void(0)"
-              v-for="(item,index) in BottomList"
-              :key="index"
-            >
-              <span>{{ item.categoryName }}</span>
-              <img :src="item.picUrl" alt="">
+          <div class="exclusive-right-top exclusive-right-bottom">
+            <a href="#">
+              <div class="exclusive-text">
+                <span>新人拼团</span>
+                <p></p>
+                <i>一元起包邮</i>
+              </div>
+              <div class="exclusive-img">
+                <img src="https://yanxuan.nosdn.127.net/d391ff6177d8e9a6b29356c15ba97713.png" alt=""> 
+                <div class="exclusive-icon">
+                  <span>￥313</span>
+                  <p>￥380</p>
+                </div>
+              </div>
             </a>
           </div>
         </div>
       </div>
-      <!-- 限时购 -->
-      <div class="Time-limit">
-        <div class="Time-limit-title">
-          <h2>限时购</h2>
-          <div>更多></div>
-        </div>
-        <div class="Time-limit-main">
-          <router-link
-            class="Time-limit-List"
-            v-for="(item,index) in TimeLimitList"
+    </div>
+    <!-- 品牌制造商直供 -->
+    <div class="brand-supplier">
+      <div class="title">
+        <h2>品牌制造商直供</h2>
+        <a href="#">更多></a>
+      </div>
+      <div class="brand-supplier-main">
+        <a href="#" 
+          v-for="(item,index) in BrandSupplierList"
+          :key="index"
+        >
+          <img :src="item.picUrl" alt="">
+          <div class="brand-supplier-title">
+            <h4>{{ item.name }}</h4>
+            <div>
+              <span>{{ item.floorPrice }}元起</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- 类目热销榜 -->
+    <div class="hot-product">
+      <div class="hot-product-title">
+        <h2>类目热销榜</h2>
+      </div>
+      <div class="hot-product-main">
+        <div class="top">
+          <a href="javascript:void(0)"
+            v-for="(item,index) in TopList"
             :key="index"
-            to=""
           >
-            <div class="Time-limit-listImg">
-              <img :src="item.picUrl" alt="">
-            </div>
-            <div class="Time-limit-text">
-              <span class="actualPrice">￥{{ item.activityPrice }}</span>
-              <span class="retailPrice">￥{{ item.originPrice }}</span>
-            </div>
-          </router-link>
+            <span>{{ item.categoryName }}</span>
+            <img :src="item.picUrl" alt="">
+          </a>
+        </div>
+        <div class="bottom">
+          <a href="javascript:void(0)"
+            v-for="(item,index) in BottomList"
+            :key="index"
+          >
+            <span>{{ item.categoryName }}</span>
+            <img :src="item.picUrl" alt="">
+          </a>
         </div>
       </div>
-      <!-- 购物指南 -->
-      <div class="guide">
-        <router-link 
-          class="guide-List"
-          v-for="(item,index) in GuideList"
+    </div>
+    <!-- 限时购 -->
+    <div class="Time-limit">
+      <div class="Time-limit-title">
+        <h2>限时购</h2>
+        <div>更多></div>
+      </div>
+      <div class="Time-limit-main">
+        <router-link
+          class="Time-limit-List"
+          v-for="(item,index) in TimeLimitList"
           :key="index"
           to=""
         >
-          <div class="guide-top">
-            <h3>{{ item.styleItem.title }}</h3>
-            <span>{{ item.styleItem.desc }}</span>
+          <div class="Time-limit-listImg">
+            <img :src="item.picUrl" alt="">
           </div>
-          <div class="guide-bottom">
-            <img :src="item.styleItem.picUrlList[0]" alt="">
-            <img :src="item.styleItem.picUrlList[1]" alt="">
+          <div class="Time-limit-text">
+            <span class="actualPrice">￥{{ item.activityPrice }}</span>
+            <span class="retailPrice">￥{{ item.originPrice }}</span>
           </div>
         </router-link>
       </div>
-      <!-- 推荐列表 -->
-      <div class="recommended">
-        <div class="recommended-list"
-          v-for="(item,index) in RecommendedList"
-          :key="index"
-        >
-          <router-link to="" class="recommended-imgs">
-            <img :src="item.titlePicUrl" alt="">
-          </router-link>
-          <div class="recommended-bottom">
-            <div class="perspective">
-              <div class="perspective-list">
-                <router-link 
-                  class="recommended-Child-List"
-                  to=""
-                  v-for="(list,index) in item.itemList"
-                  :key="index"
-                >
-                  <div class="list-img">
-                    <img :src="list.listPicUrl" alt="">
+    </div>
+    <!-- 购物指南 -->
+    <div class="guide">
+      <router-link 
+        class="guide-List"
+        v-for="(item,index) in GuideList"
+        :key="index"
+        to=""
+      >
+        <div class="guide-top">
+          <h3>{{ item.styleItem.title }}</h3>
+          <span>{{ item.styleItem.desc }}</span>
+        </div>
+        <div class="guide-bottom">
+          <img :src="item.styleItem.picUrlList[0]" alt="">
+          <img :src="item.styleItem.picUrlList[1]" alt="">
+        </div>
+      </router-link>
+    </div>
+    <!-- 推荐列表 -->
+    <div class="recommended">
+      <div class="recommended-list"
+        v-for="(item,index) in RecommendedList"
+        :key="index"
+      >
+        <router-link to="" class="recommended-imgs">
+          <img :src="item.titlePicUrl" alt="">
+        </router-link>
+        <div class="recommended-bottom">
+          <div class="perspective">
+            <div class="perspective-list">
+              <router-link 
+                class="recommended-Child-List"
+                to=""
+                v-for="(list,index) in item.itemList"
+                :key="index"
+              >
+                <div class="list-img">
+                  <img :src="list.listPicUrl" alt="">
+                </div>
+                <div class="list-text">
+                  <p>{{ list.name }}</p>
+                  <div class="i">
+                    <i>
+                      ￥{{ list.retailPrice }}
+                    </i>
                   </div>
-                  <div class="list-text">
-                    <p>{{ list.name }}</p>
-                    <div class="i">
-                      <i>
-                        ￥{{ list.retailPrice }}
-                      </i>
-                    </div>
-                    <div class="span">
-                      <span
-                        v-show="list.promTag"
-                      >
-                        {{ list.promTag }}
-                      </span>
-                    </div>
+                  <div class="span">
+                    <span
+                      v-show="list.promTag"
+                    >
+                      {{ list.promTag }}
+                    </span>
                   </div>
-                </router-link>
-              </div>
+                </div>
+              </router-link>
             </div>
           </div>
         </div>
       </div>
-      <!-- 底部版权信息 -->
-      <div class="footer">
-        <div class="download">
-          <span>下载APP</span>
-          <span>电脑版</span>
-        </div>
-        <div class="copy">
-          <p>网易公司版权所有 © 1997-2020</p>
-          <p>食品经营许可证：JY13301080111719</p>
-        </div>
+    </div>
+    <!-- 底部版权信息 -->
+    <div class="footer">
+      <div class="download">
+        <span>下载APP</span>
+        <span>电脑版</span>
       </div>
-      <!-- 固定小图标 -->
-      <router-link tag="a" to="" class="box-icon"></router-link>
+      <div class="copy">
+        <p>网易公司版权所有 © 1997-2020</p>
+        <p>食品经营许可证：JY13301080111719</p>
+      </div>
     </div>
   </div>
 </template>
@@ -241,10 +221,9 @@
 import axios from "axios";
 export default {
   data() {
+    let HomeCOntentNumber = this.$route.meta.HomeCOntent;
     return {
-      value: "",
       BannerList: [],
-      NavList: [],
       // 消费保障数据获取
       Security: [
         {
@@ -270,20 +249,11 @@ export default {
       TimeLimitList: [],
       GuideList: [],
       RecommendedList: [],
-    };
+      vModel: HomeCOntentNumber,
+    }
   },
 
   methods: {
-    /**
-     * 通过 axios 请求 首页横向导航模块 的后台数据
-     */
-    NavMethods() {
-      axios.get("http://129.204.72.71:8000/api/catelist").then(res => {
-        // console.log(res.data)
-        this.NavList = res.data.data;
-      });
-    },
-
     /**
      * 通过 axios 请求 首页轮播图模块 的后台数据
      */
@@ -357,12 +327,7 @@ export default {
     }
   },
 
-  created() {
-    /**
-     * 调用首页横向导航方法
-     */
-    this.NavMethods();
-
+  created () {
     /**
      * 调用首页轮播图方法
      */
@@ -398,50 +363,11 @@ export default {
      */
     this.RecommendedMethods()
   }
-};
+}
 </script>
 
 <style lang="less">
-@import "../../styles/reset.less";
-.main {
-  background: #f4f4f4;
-}
-// header头部部分
-.header {
-  width: 375px;
-  height: 88px;
-  position: relative;
-  box-sizing: border-box;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #fff;
-
-  .header-logo {
-    float: left;
-    display: inline-block;
-    width: 79px;
-    height: 23.99px;
-    margin: 10px 10px 10px 15px;
-
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .header-search {
-    float: left;
-    display: inline-block;
-  }
-
-  // search组件的样式修改
-  .van-search {
-    padding: 5px 15px 5px 0;
-  }
-}
-
+@import "../../../styles/reset.less";
 // main主体部分
 .main {
   width: 375px;
@@ -1170,19 +1096,6 @@ export default {
       color: #999;
       text-align: center;
     }
-  }
-
-  // 固定小图标
-  .box-icon{
-    display: block;
-    position: fixed;
-    right:0;
-    bottom: 150px;
-    width:65px;
-    height:50px;
-    border-radius: 50px 0 0 50px;
-    background:url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/wapNewUserEntry-b69d0624fd.png) no-repeat;
-    background-size: 100%;
   }
 }
 </style>
