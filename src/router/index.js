@@ -10,7 +10,7 @@ export default new VueRouter({
 			path: '/',
 			component: () => import('../views/index/Index.vue'),
 			children: [
-				{ path: 'HomePage', name: 'HomePage', component: () => import('../views/index/HomePage.vue'), meta: { tabIndex: 0 } },
+				{ path: 'HomePage', name: 'HomePage', component: () => import('../views/home/HomePage.vue'), meta: { tabIndex: 0 } },
 				{ path: 'Classification', name: 'Classification', component: () => import('../views/index/Classification.vue'), meta: { tabIndex: 1 } },
 				{ path: 'ShoppingCart', name: 'ShoppingCart', component: () => import('../views/index/ShoppingCart.vue'), meta: { tabIndex: 2 } },
 
